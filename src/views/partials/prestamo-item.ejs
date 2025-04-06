@@ -1,0 +1,12 @@
+<!-- Item del prestamo -->
+<li class="Prestamo">
+  <p>Usuario: <%= prestamo.usuario.nombre %> (<%= prestamo.usuario.idUsuario %>)</p>
+  <p>Libro: <%= prestamo.libro.titulo %> (<%= prestamo.libro.codigo %>)</p>
+  <!-- Valida si el prestamo tiene fecha de devolución -->
+  <% if (!prestamo.fechaDevolucion) { %>
+    <p>Estado: En préstamo</p>
+  <% } else { %>
+    <p>Estado: Devuelto</p>
+    <p>Fecha de devolución: <%= prestamo.fechaDevolucion %></p>
+  <% } %>
+</li>

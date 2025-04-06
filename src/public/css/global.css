@@ -1,0 +1,164 @@
+* {
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --light-color: #ffffff;
+  --neutral-color: #eeeded;
+  --dark-color: #333333;
+  --primary-color: #2c3e50;
+  --secondary-color: #16a085;
+  --accent-color: #28a745;
+}
+
+main {
+  padding-bottom: 30px;
+}
+
+.Navbar {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Navbar ul {
+  list-style-type: none;
+  display: flex;
+  padding: 10px 0;
+}
+
+.Navbar ul li a {
+  margin: 0 10px 0 0;
+  color: var(--light-color);
+}
+
+html, body {
+  height: 100vh;
+  background-color: var(--neutral-color);
+}
+
+input {
+  padding: 5px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 2px;
+}
+
+button {
+  padding: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.Crear {
+  background-color: var(--light-color);
+  margin: 5px 10px;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.Crear h2 {
+  color: var(--primary-color);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.Listado {
+  padding: 10px;
+}
+
+.Usuario {
+  background-color: var(--primary-color);
+  padding: 4px 8px;
+  color: var(--light-color);
+  border-radius: 2px;
+  margin: 5px 0;
+}
+
+.Usuario>header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0 3px;
+  border-radius: 2px;
+}
+
+.Usuario>header>span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px 2px;
+}
+
+.Usuario>header>span>h2 {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.Usuario>ul {
+  list-style-type: none;
+  padding: 2px 0 0 0;
+}
+
+
+.Libros {
+  margin: 10px;
+}
+
+.Libros ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Libros>ul>li {
+  display: flex;
+  flex-direction: column;
+  margin: 1% 0;
+  justify-content: space-between;
+  color: var(--dark-color);
+  border-radius: 2px;
+  background-color: var(--light-color);
+}
+
+.Libros span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  color: var(--light-color);
+  background-color: var(--primary-color);
+}
+
+.Libros div {
+  padding: 10px;
+}
+
+.Prestamos {
+  margin: 10px; 
+}
+
+.Prestamo {
+  display: flex;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  padding: 5px 10px;
+  justify-content: space-between;
+}

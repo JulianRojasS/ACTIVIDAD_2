@@ -1,0 +1,10 @@
+<!-- Listado de los prestamos -->
+<div class="Prestamos">
+  <h2>Prestamos:</h2>
+  <ul>
+    <!-- Se recibe como parametro los parametros -->
+    <!-- Se recorre la lista de prestampos y se retorna el item -->
+    <% prestamos.forEach(prestamo => { %> <%- include('./prestamo-item',
+    {prestamo}) %> <% }) %>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+<!-- Prestamos del usuario -->
+<b>Prestamos del usuario:</b>
+<ul>
+  <!-- Se realiza filtro de los prestamos para mostrar solo los del usuario -->
+   <!-- Recorre el listado filitrado de los prestamos del usuario y retorna el item -->
+  <% prestamos.filter(prestamo => prestamo.usuario.idUsuario ===
+  usuario.idUsuario ).forEach(prestamo => { %>
+    <%- include('./prestamo-item', {prestamo}) %> 
+  <% }) %>
+</ul>

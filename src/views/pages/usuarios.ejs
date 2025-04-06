@@ -1,0 +1,10 @@
+<!-- Se carga '../partials/crear-usuario.ejs' para registrar un nuevo usuario -->
+<%- include('../partials/crear-usuario') %>
+<!-- Verifica si hay usuarios -->
+<% if (usuarios.length > 0) {%>
+  <!-- Carga '../partials/listado-usuarios.ejs' para ver el listado de usuarios -->
+  <%- include('../partials/listado-usuarios') %>
+<% } else { %>
+  <!-- Si no hay usuarios muestral del siguiente mensaje -->
+  <p>No hay usuarios registrados.</p>
+<% } %>

@@ -1,0 +1,9 @@
+<!-- Listado de usuario -->
+<section class="Listado">
+  <b>Usuarios registrados:</b>
+  <!-- Se recibe como parametros el listado de usuario -->
+  <!-- Se recorre el listado y se retorna el item './usuario-item.ejs' -->
+  <% usuarios.forEach(usuario => { %>
+    <%- include('./usuario-item', {usuario}) %>
+  <% }) %>
+</section>

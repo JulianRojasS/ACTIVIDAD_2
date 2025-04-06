@@ -1,0 +1,15 @@
+<!-- Item del usuario -->
+<div class="Usuario">
+  <header>
+    <span>
+      <h2>Nombre:</h2>
+      <p><%= usuario.nombre %></p>
+    </span>
+    <span>
+      <h2>Codigo:</h2>
+      <p><%= usuario.idUsuario %></p>
+    </span>
+  </header>
+  <!-- Prestamos del usuario 'usuarios-prestamo.ejs' -->
+  <%- include('./usuarios-prestamos', {prestamos}) %>
+</div>

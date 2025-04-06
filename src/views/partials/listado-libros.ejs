@@ -1,0 +1,11 @@
+<!-- Listado de libros -->
+<div class="Libros">
+  <h3>Listado de libros:</h3>
+  <ul>
+    <!-- Se recibe libros como parametro -->
+    <!-- Se recorre la lista de libros y se retorna './libros-item.ejs' -->
+    <% libros.forEach(libro => { %>
+      <%- include('./libros-item' ,{libro, prestamos}) %>
+    <% }) %>
+  </ul>
+</div>
