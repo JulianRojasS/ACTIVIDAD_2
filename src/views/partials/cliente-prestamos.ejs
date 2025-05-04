@@ -1,0 +1,16 @@
+<!-- Prestamos del cliente -->
+<!-- Se realiza filtro de los prestamos para mostrar solo los del cliente -->
+<!-- Recorre el listado filitrado de los prestamos del cliente y retorna el item -->
+<div class="flex flex-col">
+  <% const prestamosDelCliente=prestamos.filter(prestamo=> prestamo.cliente.idCliente === cliente.idCliente ); %>
+    <% if (prestamosDelCliente.length> 0) { %>
+      <b>Prestamos del cliente:</b>
+      <ul class="flex flex-col gap-2 list-group list-group-flush">
+        <% prestamosDelCliente.forEach(prestamo=> { %>
+          <%- include('./prestamo-item', {prestamo}) %>
+            <% }) %>
+      </ul>
+      <% } else { %>
+        <b class="text-primary-dark underline text-center w-full">No hay prestamos para este cliente</b>
+        <% } %>
+</div>

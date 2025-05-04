@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import AppRouter from './router/app';
 import expressLayouts from 'express-ejs-layouts';
+import cookieParser from 'cookie-parser';
+import methodOverride from "method-override";
 
 // Se inicializa la aplicacion express
 const app = express();
@@ -14,6 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'layouts/layout');
 // Se establece el motor de plantillas EJS
 app.set('view engine', 'ejs');
+// Se establece el middleware para manejar cookies
+app.use(cookieParser());
 
 // Se establece la carpeta de archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,6 +29,9 @@ app.use(express.static('public'));
 app.use(express.json());
 // Se establece el middleware para manejar layouts con EJS
 app.use(expressLayouts);
+
+// Configurar method-override para interpretar el campo `_method`
+app.use(methodOverride("_method"));
 
 // Se configura el middleware para manejar las rutas de la aplicacion
 app.use('/', AppRouter);

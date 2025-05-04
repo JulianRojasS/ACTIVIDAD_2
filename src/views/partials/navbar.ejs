@@ -1,14 +1,19 @@
 <!-- Barra de navegación -->
-<header class="Navbar">
-  <h1>Sistema de Librería</h1>
-  <nav>
-    <ul>
+<header class="flex flex-col justify-center px-5 py-2 bg-bg-dark text-white">
+  <h1 class="text-2xl">Tu biblioteca</h1>
+  <nav class="flex justify-between">
+    <ul class="flex items-center gap-2">
       <!-- Redirige a la pagina principal '/' -->
-      <li><a href="/">Inicio</a></li>
+      <li class="hover:underline"><a href="/home">Inicio</a></li>
       <!-- Redirige a la pagina de libros '/libros' -->
-      <li><a href="/libros">Libros</a></li>
-      <!-- Redirige a la pagina de usuarios '/usuarios' -->
-      <li><a href="/usuarios">Usuarios</a></li>
+      <li class="hover:underline"><a href="/libros">Libros</a></li>
+      <!-- Redirige a la pagina de clientes '/clientes' -->
+      <li class="hover:underline"><a href="/clientes">Clientes</a></li>
+    </ul>
+    <ul class="flex items-center">
+      <form action="/logout" method="post">
+        <button class="bg-light rounded-md cursor-pointer text-primary-dark p-1">Cerrar sesion</button>
+      </form>
     </ul>
   </nav>
 </header>

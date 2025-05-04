@@ -1,11 +1,11 @@
-<!-- Crear usuario -->
+<!-- Crear cliente -->
 <!-- Se envia una solicitud POST con los campos 
-codigoLibro y idUsuario al servidor para registrar la devolución de un libro. -->
-<div class="Crear">
-  <h2>Devolución:</h2>
-  <form action="/devolucion" method="POST">
-    <input name="codigoLibro" placeholder="Código del libro" required />
-    <input name="idUsuario" placeholder="ID del usuario" required />
-    <button type="submit">Devolver</button>
+codigoLibro y idCliente al servidor para registrar la devolución de un libro. -->
+<div class="py-2">
+  <h2 class="text-light text-2xl">Devolución:</h2>
+  <form action="/devolucion" method="POST" class="flex gap-2">
+    <input class="bg-light px-1 rounded-xs" name="codigoLibro" placeholder="Código del libro" required />
+    <input class="bg-light px-1 rounded-xs" name="idCliente" placeholder="ID del cliente" required />
+    <button type="submit" class="bg-light py-1 px-2 rounded-md">Devolver</button>
   </form>
 </div>

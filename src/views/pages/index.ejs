@@ -1,13 +1,30 @@
-<!-- Pagina principal -->
-<!-- Verifica si hay prestamos -->
-<% if (prestamos.length > 0) {%>
-  <!-- Si hay prestamos los carga desde '../partials/listado-prestamos.ejs' -->
-  <%- include('../partials/listado-prestamos', {prestamos}) %>
-<% } else { %>
-  <!-- Muestra el siguiente mensaje si no hay prestamos -->
-<p>No se registran prestamos.</p>
-<% } %>
-<!-- Carga '../partials/crear-prestamos.ejs' para registar un prestamo -->
-<%- include('../partials/crear-prestamo') %>
-<!-- Carga '../partials/crear-devolucion.ejs para registar devolución' -->
-<%- include('../partials/crear-devolucion') %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/output.css">
+</head>
+
+<body>
+  <main class="flex flex-wrap min-h-screen p-2 bg-gradient-to-b from-bg-dark to-bg-light">
+    <div class="flex justify-center items-center flex-1/2">
+      <h1 class="text-5xl md:text-8xl text-white">Tu biblioteca</h1>
+    </div>
+    <div class="flex flex-1/2 h-28 md:h-auto items-center justify-center">
+      <!-- Formulario de inicio de sesión -->
+      <form class="flex flex-col items-center text-white p-5 rounded-sm bg-primary-dark" method="post" action="/login">
+        <label for="nombre" class="self-start">Usuario:</label>
+        <input class="bg-white text-primary-dark p-1 my-1 border" name="nombre" type="text">
+        <label for="nombre" class="self-start">Contraseña:</label>
+        <input type="password" class="bg-white text-primary-dark my-1 border p-1" name="contrasenia" type="text">
+        <button
+          class="bg-bg-light mt-3 w-32 py-1 rounded-xl cursor-pointer hover:bg-white hover:text-black">Ingresar</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

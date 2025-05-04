@@ -1,0 +1,13 @@
+<!-- Pagina principal -->
+<!-- Verifica si hay prestamos -->
+<% if (prestamos.length > 0) {%>
+  <!-- Si hay prestamos los carga desde '../partials/listado-prestamos.ejs' -->
+  <%- include('../partials/listado-prestamos', {prestamos}) %>
+<% } else { %>
+  <!-- Muestra el siguiente mensaje si no hay prestamos -->
+<p>No se registran prestamos.</p>
+<% } %>
+<!-- Carga '../partials/crear-prestamos.ejs' para registar un prestamo -->
+<%- include('../partials/crear-prestamo') %>
+<!-- Carga '../partials/crear-devolucion.ejs para registar devolución' -->
+<%- include('../partials/crear-devolucion') %>

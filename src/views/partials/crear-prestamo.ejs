@@ -1,13 +1,13 @@
 <!-- Crear prestamo -->
 <!-- Se envia una solicitud POST donde de envian los datos
- de codigo del libro y el id del usuario que lo solicita 
+ de codigo del libro y el id del cliente que lo solicita 
  al servidor para registrar el prestamo
 -->
-<div class="Crear">
-  <h2>Prestamo:</h2>
-  <form action="/prestamo" method="POST">
-    <input name="codigoLibro" placeholder="Código del libro" required />
-    <input name="idUsuario" placeholder="ID del usuario" required />
-    <button type="submit">Prestar</button>
+<div class="py-2">
+  <h2 class="text-light text-2xl">Prestamo:</h2>
+  <form class="flex gap-2" action="/prestamo" method="POST">
+    <input class="bg-light px-1 rounded-xs" name="codigoLibro" placeholder="Código del libro" required />
+    <input class="bg-light px-1 rounded-xs" name="idCliente" placeholder="ID del cliente" required />
+    <button class="bg-light py-1 px-2 rounded-md" type="submit">Prestar</button>
   </form>
 </div>

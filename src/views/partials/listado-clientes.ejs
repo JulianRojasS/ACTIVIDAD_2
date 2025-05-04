@@ -1,0 +1,16 @@
+<!-- Listado de cliente -->
+<section class="flex flex-col px-3 text-light">
+  <!-- Se verifica la cantidad de clientes -->
+  <% if (clientes.length > 0) { %>
+    <b>Clientes registrados:</b>
+    <!-- Se recibe como parametros el listado de cliente -->
+    <!-- Se recorre el listado y se retorna el item './cliente-item.ejs' -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-4">
+      <% clientes.forEach(cliente => { %>
+        <%- include('./cliente-item', {cliente}) %>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <b class="text-center">No hay clientes registrados</b>
+  <% } %>
+</section>

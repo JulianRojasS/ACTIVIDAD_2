@@ -1,7 +1,7 @@
 <!-- Listado de los prestamos -->
-<div class="Prestamos">
-  <h2>Prestamos:</h2>
-  <ul>
+<div class="py-2">
+  <h2 class="text-light text-2xl">Prestamos:</h2>
+  <ul class="py-2 flex flex-col gap-2 list-group list-group-flush">
     <!-- Se recibe como parametro los parametros -->
     <!-- Se recorre la lista de prestampos y se retorna el item -->
     <% prestamos.forEach(prestamo => { %> <%- include('./prestamo-item',

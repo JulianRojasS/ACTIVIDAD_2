@@ -1,87 +1,78 @@
-import express from 'express';
-import { Libreria } from '../service/Libreria';
-import { Libro } from '../model/Libro';
-import { Usuario } from '../model/Usuario';
+import express from "express";
+import { Libro } from "../model/Libro";
+import { Cliente } from "../model/Cliente";
+import { LibreriaControlador } from "../controler/LibreriaControlador";
+import { SesionControlador } from "../controler/SesionControlador";
 
 // Importar las clases necesarias
-// Libreria, Libro y Usuario
+// Libreria, Libro y Cliente
 // Libreria: contiene la logica de negocio para gestionar libros y prestamos
 // Libro: representa un libro con su codigo, titulo y autor
-// Usuario: representa un usuario con su id y nombre
+// Cliente: representa un cliente con su id y nombre
 
 /* Manejador de rutas */
 const router = express.Router();
-/* Instancia de la libreria a gestionar */
-const libreria = new Libreria();
+// Controlador de la libreria
+const {
+  login,
+  home,
+  crearLibro,
+  libros,
+  clientes,
+  crearCliente,
+  crearPrestamo,
+  devolverLibro,
+  eliminarCliente,
+} = new LibreriaControlador();
+
+// Controlador de sesiones
+const {
+  verificarSesion,
+  verificarToken,
+  login: sesionLogin,
+  logout: sesionLogout,
+  listarSesionesActivas,
+  buscarSesion,
+  buscarUsuario,
+} = new SesionControlador();
 
 /* Rutas de la aplicacion */
 
+// Ruta para iniciar sesion
+router.post("/login",sesionLogin)
+// Ruta para cerrar sesion
+.post("/logout", sesionLogout)
+// Ruta para ver las sesiones activas
+.get("/sesiones", listarSesionesActivas)
+// Ruta para buscar una sesion por id de usuario
+.get("/buscarSesion/:idUsuario", buscarSesion)
+// Ruta para buscar un usuario por nombre
+.get("/buscarUsuario/:nombre", buscarUsuario)
+// Renderiza la vista de inicio de sesion
+.get("/", login)
 // Ruta para la pagina principal
 // Renderiza la vista de la pagina principal y pasa los prestamos actuales
-router.get('/', (req, res) => {
-  res.render('pages/index', {
-    prestamos: libreria.listarPrestamos()
-  });
-});
-
+.get("/home", verificarSesion, verificarToken, home)
 // Ruta para la pagina de libros
 // Renderiza la vista de libros y pasa la lista de libros y prestamos actuales
-router.get('/libros', (req, res) => {
-  res.render('pages/libros', {
-    libros: libreria.listarLibros(),
-    prestamos: libreria.listarPrestamos()
-  });
-});
-
+.get("/libros", verificarSesion, verificarSesion, libros)
 // Permite registrar nuevos libros mediante un formulario
 // Recibe el codigo, titulo y autor del libro desde el cuerpo de la solicitud
-router.post('/libros', (req, res) => {
-  const { codigo, titulo, autor } = req.body;
-  // Crea una nueva instancia de Libro y la registra en la libreria
-  const libro = new Libro(codigo, titulo, autor);
-  libreria.registrarLibro(libro);
-  // Luego redirige a la pagina de libros
-  res.redirect('/libros');
-});
-
-///  Ruta para la pagina de usuarios
-// Renderiza la vista de usuarios y pasa la lista de usuarios y prestamos actuales
-router.get('/usuarios', (req, res) => {
-  res.render('pages/usuarios', {
-    usuarios: libreria.listarUsuarios(),
-    prestamos: libreria.listarPrestamos()
-  });
-});
-
-// Permite registrar nuevos usuarios mediante un formulario
-// Recibe el id y nombre del usuario desde el cuerpo de la solicitud
-router.post('/usuarios', (req, res) => {
-  const { idUsuario, nombre } = req.body;
-  // Crea una nueva instancia de Usuario y la registra en la libreria
-  const usuario = new Usuario(idUsuario, nombre);
-  libreria.registrarUsuario(usuario);
-  // Luego redirige a la pagina de usuarios
-  res.redirect('/usuarios');
-});
-
+.post("/libros", crearLibro)
+///  Ruta para la pagina de clientes
+// Renderiza la vista de clientes y pasa la lista de clientes y prestamos actuales
+.get("/clientes", verificarSesion, verificarToken, clientes)
+// Permite registrar nuevos clientes mediante un formulario
+// Recibe el id y nombre del cliente desde el cuerpo de la solicitud
+.post("/clientes", crearCliente)
 /// Ruta para registrar prestamos
-// Renderiza la vista de prestamos y pasa la lista de libros, usuarios y prestamos actuales
-router.post('/prestamo', (req, res) => {
-  const { codigoLibro, idUsuario } = req.body;
-  /// Agrega un nuevo prestamo a la libreria
-  libreria.prestarLibro(codigoLibro, idUsuario);
-  // Luego redirige a la pagina principal
-  res.redirect('/');
-});
-
+// Renderiza la vista de prestamos y pasa la lista de libros, clientes y prestamos actuales
+.post("/prestamo", crearPrestamo)
 // Ruta para devolver libros
-router.post('/devolucion', (req, res) => {
-  const { codigoLibro, idUsuario } = req.body;
-  // Agrega una devolucion a la libreria
-  libreria.devolverLibro(codigoLibro, idUsuario);
-  // Luego redirige a la pagina principal
-  res.redirect('/');
-});
+.post("/devolucion", devolverLibro)
+/// Ruta para eliminar clientes
+// Recibe el id del cliente a eliminar desde el cuerpo de la solicitud
+.delete("/clientes/:idCliente",  eliminarCliente)
 
 // Se exporta el router para ser utilizado en la aplicacion principal
 export default router;

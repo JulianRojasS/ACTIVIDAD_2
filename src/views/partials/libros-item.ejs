@@ -1,33 +1,47 @@
 <!-- Item de la lista de libros -->
 <!-- Se recibe como parametro un libro y una lista de prestamos -->
 <!-- Se recorre la lista de prestamos y se retorna el item -->
-<li>
-  <span>
-    <strong>
-      Titulo:
-    </strong>
-    <p>
-      <%= libro.titulo %>
-    </p>
-    <strong>
-      Autor:
-    </strong>
-    <p>
-      <%= libro.autor %>
-    </p>
-    <strong>Estado:</strong> 
-    <p>
-      <%= libro.disponible ? 'Disponible' : 'No disponible' %>
-    </p>
-  </span>
+<li class="bg-light p-2 rounded-xs shadow-md flex flex-col gap-2 list-group-item list-group-item-action">
+  <section class="flex flex-col gap-2">
+    <span class="flex justify-between">
+      <strong>
+        Codigo:
+      </strong>
+      <p>
+        <%= libro.codigo %>
+      </p>
+    </span>
+    <span class="flex justify-between">
+      <strong>
+        Titulo:
+      </strong>
+      <p>
+        <%= libro.titulo %>
+      </p>
+    </span>
+    <span class="flex justify-between">
+      <strong>
+        Autor:
+      </strong>
+      <p>
+        <%= libro.autor %>
+      </p>
+    </span>
+    <span class="flex justify-between">
+      <strong>Estado:</strong>
+      <p>
+        <%= libro.disponible ? 'Disponible' : 'No disponible' %>
+      </p>
+    </span>
+  </section>
   <div>
     <b>Prestamos:</b>
     <ul>
       <!-- Se recorre la lista de prestamos y se retorna el item -->
       <!-- Se filtra la lista de prestamos por el libro que se recibe como parametro -->
-      <% prestamos.filter(prestamo => prestamo.libro.codigo === libro.codigo).forEach((prestamo) => {%>
+      <% prestamos.filter(prestamo=> prestamo.libro.codigo === libro.codigo).forEach((prestamo) => {%>
         <%- include('./prestamo-item', {prestamo}) %>
-      <% }) %>
+          <% }) %>
     </ul>
   </div>
 </li>

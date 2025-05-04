@@ -1,0 +1,13 @@
+<!-- Crear cliente -->
+<!-- Se envia una solicitud POST con los datos de
+ idCliente y nombre al servidor para registrar un nuevo cliente.
+-->
+
+<div class="text-white w-100 mx-auto py-5 rounded-sm">
+  <h2>Registrar Cliente:</h2>
+  <form action="/clientes" method="POST" class="gap-2 flex">
+    <input class="bg-light px-2 rounded-xs text-primary-dark" type="text" name="idCliente" placeholder="Codigo del cliente" required>
+    <input class="bg-light px-2 rounded-xs text-primary-dark" type="text" name="nombre" placeholder="Nombre" required>
+    <button type="submit" class="bg-light text-primary-dark py-1 px-2 rounded-md hover:bg-bg-dark hover:text-light border cursor-pointer">Registrar</button>
+  </form>
+</div>

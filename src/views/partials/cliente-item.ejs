@@ -1,0 +1,24 @@
+<!-- Item del cliente -->
+<div class="bg-light p-2 w-100 mx-auto rounded-sm text-primary-dark">
+  <header>
+    <!-- Información del cliente -->
+    <span class="flex justify-between items-center mb-2">
+      <h3 class="font-bold">Información del cliente:</h3>
+      <!-- Eliminar al cliente Method DELETE /clientes/[idCliente] -->
+      <form method="post" action="/clientes/<%= cliente.idCliente %>?_method=DELETE" class="flex items-center gap-2">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="underline">Eliminar</button>
+      </form>
+    </span>
+    <span class="flex justify-between items-center mb-2">
+      <h2>Codigo:</h2>
+      <p class="font-bold"><%= cliente.idCliente %></p>
+    </span>
+    <span class="flex justify-between items-center mb-2">
+      <h2>Nombre:</h2>
+      <p><%= cliente.nombre %></p>
+    </span>
+  </header>
+  <!-- Prestamos del cliente 'clientes-prestamo.ejs' -->
+  <%- include('./cliente-prestamos', {prestamos}) %>
+</div>

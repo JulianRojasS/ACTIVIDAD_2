@@ -1,12 +1,20 @@
 <!-- Item del prestamo -->
-<li class="Prestamo">
-  <p>Usuario: <%= prestamo.usuario.nombre %> (<%= prestamo.usuario.idUsuario %>)</p>
-  <p>Libro: <%= prestamo.libro.titulo %> (<%= prestamo.libro.codigo %>)</p>
-  <!-- Valida si el prestamo tiene fecha de devolución -->
-  <% if (!prestamo.fechaDevolucion) { %>
-    <p>Estado: En préstamo</p>
-  <% } else { %>
-    <p>Estado: Devuelto</p>
-    <p>Fecha de devolución: <%= prestamo.fechaDevolucion %></p>
-  <% } %>
+<li class="bg-gray-200 px-2 rounded-xs list-group-item d-flex justify-content-between align-items-start text-primary-dark">
+  <span class="flex justify-between">
+    <h4 class="font-bold">Cliente:</h4>
+    <p>
+      <%= prestamo.cliente.nombre %> (<%= prestamo.cliente.idCliente %>)
+    </p>
+  </span>
+  <div class="flex justify-between">
+    <p>Libro: <%= prestamo.libro.titulo %> (<%= prestamo.libro.codigo %>)</p>
+    <!-- Valida si el prestamo tiene fecha de devolución -->
+    <% if (!prestamo.fechaDevolucion) { %>
+      <p>Estado: En préstamo</p>
+      <% } else { %>
+        <p>Estado: Devuelto</p>
+        <p>Fecha de devolución: <%= prestamo.fechaDevolucion %>
+        </p>
+        <% } %>
+  </div>
 </li>
