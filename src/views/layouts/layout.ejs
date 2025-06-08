@@ -1,27 +1,30 @@
 <!-- Plantilla principal de la pagina -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Librería</title>
   <!-- Fuentes de la pagina -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Shippori+Antique+B1&family=Varela+Round&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Shippori+Antique+B1&family=Varela+Round&display=swap"
+    rel="stylesheet">
   <!-- Carga los estilos desde la ruta definida 'src/public' -->
-  <link rel="stylesheet" href="css/output.css">
+  <link rel="stylesheet" href="/css/output.css">
 </head>
-<body>
-  <main class="flex flex-col justify-between min-h-screen bg-bg-light">
-  <!-- Carga el navbar -->  
+
+<body class="flex flex-col justify-between min-h-screen bg-bg-light">
+  <!-- Carga el navbar -->
   <%- include('../partials/navbar') %>
     <!-- Recibe el contenido de la pagina -->
-    <section class="flex flex-col flex-1/2 p-3">
+    <main class="flex flex-col flex-1/2 p-3">
       <%- body %>
-    </section>
+    </main>
     <footer class="bg-bg-dark text-white p-2 text-center">
       <p>© 2025 Librería App</p>
     </footer>
-  </main>
 </body>
+
 </html>

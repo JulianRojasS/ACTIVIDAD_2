@@ -1,5 +1,6 @@
 <!-- Item del cliente -->
 <div class="bg-light p-2 w-100 mx-auto rounded-sm text-primary-dark">
+  <% const prestamosCliente = prestamos.filter(prestamo => prestamo.cliente.idCliente === cliente.idCliente) %>
   <header>
     <!-- Información del cliente -->
     <span class="flex justify-between items-center mb-2">
@@ -9,6 +10,7 @@
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit" class="underline">Eliminar</button>
       </form>
+      <a href="/clientes/<%= cliente.idCliente %>">Ver</a>
     </span>
     <span class="flex justify-between items-center mb-2">
       <h2>Codigo:</h2>
@@ -20,5 +22,5 @@
     </span>
   </header>
   <!-- Prestamos del cliente 'clientes-prestamo.ejs' -->
-  <%- include('./cliente-prestamos', {prestamos}) %>
+  <%- include('./cliente-prestamos', {prestamos: prestamosCliente}) %>
 </div>

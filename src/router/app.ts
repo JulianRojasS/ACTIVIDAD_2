@@ -18,11 +18,15 @@ const {
   home,
   crearLibro,
   libros,
+  libro,
   clientes,
   crearCliente,
   crearPrestamo,
   devolverLibro,
   eliminarCliente,
+  librosPrestadosPorCliente,  
+  clienteQueTieneLibro,
+  cliente
 } = new LibreriaControlador();
 
 // Controlador de sesiones
@@ -59,9 +63,15 @@ router.post("/login",sesionLogin)
 // Permite registrar nuevos libros mediante un formulario
 // Recibe el codigo, titulo y autor del libro desde el cuerpo de la solicitud
 .post("/libros", crearLibro)
+/// Ruta para ver un libro especifico
+// Renderiza la vista de un libro especifico y pasa sus datos
+.get("/libros/:codigoLibro", verificarSesion, verificarToken, libro)
 ///  Ruta para la pagina de clientes
 // Renderiza la vista de clientes y pasa la lista de clientes y prestamos actuales
 .get("/clientes", verificarSesion, verificarToken, clientes)
+// Ruta para ver un cliente especifico
+// Renderiza la vista de un cliente especifico y pasa sus datos
+.get("/clientes/:idCliente", verificarSesion, verificarToken, cliente)
 // Permite registrar nuevos clientes mediante un formulario
 // Recibe el id y nombre del cliente desde el cuerpo de la solicitud
 .post("/clientes", crearCliente)
@@ -73,6 +83,9 @@ router.post("/login",sesionLogin)
 /// Ruta para eliminar clientes
 // Recibe el id del cliente a eliminar desde el cuerpo de la solicitud
 .delete("/clientes/:idCliente",  eliminarCliente)
-
+// Consulta: Libros prestados por un cliente
+router.get("/prestamos/cliente/:idCliente", librosPrestadosPorCliente);
+// Consulta: Quién tiene un libro prestado
+router.get("/prestamos/libro/:codigoLibro", clienteQueTieneLibro);
 // Se exporta el router para ser utilizado en la aplicacion principal
 export default router;

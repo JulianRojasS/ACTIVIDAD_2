@@ -30,6 +30,17 @@ export class LibreriaControlador {
     });
   };
 
+  libro = (req: Request, res: Response) => {
+    const { codigoLibro } = req.params;
+    // Renderiza la vista de un libro especifico y pasa sus datos
+    const libro = this.libreria.buscarLibro(codigoLibro);
+    const prestamos = this.libreria.clienteQueTieneLibro(codigoLibro);
+    res.render("pages/libro", {
+      libro,
+      prestamos,
+    });
+  }
+
   // Permite registrar nuevos libros mediante un formulario
   crearLibro = (req: Request, res: Response) => {
     const { codigo, titulo, autor } = req.body;
@@ -48,6 +59,17 @@ export class LibreriaControlador {
       prestamos: this.libreria.listarPrestamos(),
     });
   };
+
+  cliente = (req: Request, res: Response) => {
+    const { idCliente } = req.params;
+    // Renderiza la vista de un cliente especifico y pasa sus datos
+    const cliente = this.libreria.buscarCliente(idCliente);
+    const prestamos = this.libreria.librosPrestadosPorCliente(idCliente);
+    res.render("pages/cliente", {
+      cliente,
+      prestamos,
+    });
+  }
 
   crearCliente = (req: Request, res: Response) => {
     const { idCliente, nombre } = req.body;
@@ -80,5 +102,19 @@ export class LibreriaControlador {
     this.libreria.eliminarCliente(idCliente);
     // Luego redirige a la pagina de clientes
     res.redirect("/clientes");
+  };
+
+  // Consulta: Libros prestados por un cliente (usando el grafo)
+  librosPrestadosPorCliente = (req: Request, res: Response) => {
+    const { idCliente } = req.params;
+    const libros = this.libreria.librosPrestadosPorCliente(idCliente);
+    res.json(libros);
+  };
+
+  // Consulta: Quién tiene un libro prestado (usando el grafo)
+  clienteQueTieneLibro = (req: Request, res: Response) => {
+    const { codigoLibro } = req.params;
+    const clientes = this.libreria.clienteQueTieneLibro(codigoLibro);
+    res.json(clientes);
   };
 }

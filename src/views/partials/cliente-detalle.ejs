@@ -1,0 +1,22 @@
+<div class="flex gap-2 py-2 my-2 justify-center text-white border-b">
+  <a class="underline text-white absolute left-0 pl-4" href="/clientes">Volver</a>
+  <span class="">ID del cliente: </span>
+  <span><%= cliente.idCliente %></span>
+  <span class=""> - </span>
+  <span class="">Nombre: </span>
+  <span><%= cliente.nombre %></span>
+</div>
+<section>
+  <h3 class="text-center text-white">Historial de prestamos:</h3>
+  <!-- Mostrar información del los libros prestamos -->
+  <ul class="list-none p-0 flex gap-2 flex-wrap">
+    <% prestamos.forEach(prestamo => { %>
+     <li class="bg-white max-w-[350px] p-3 my-2 rounded-md text-black">
+      <p>Libro: <strong><%= prestamo.libro.titulo %></strong></p>
+      <p>Autor: <%= prestamo.libro.autor %></p>
+      <p>Fecha de préstamo: <%= prestamo.fechaPrestamo %></p>
+      <p>Fecha de devolución: <%= prestamo.fechaDevolucion ? prestamo.fechaDevolucion : "Sin devolver" %></p>
+     </li>
+    <% }) %>
+  </ul>
+</section>

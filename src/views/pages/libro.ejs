@@ -1,0 +1,32 @@
+<div class="flex gap-2 p-2 justify-around bg-white shadow-md rounded-md">
+  <a href="/libros" class="bg-bg-light border-0 rounded-sm text-white px-2">Volver a Libros</a>
+  <h2>Detalles del Libro</h2>
+  <h3>Código: <%= libro.codigo %>
+  </h3>
+  <h3>Título: <%= libro.titulo %>
+  </h3>
+  <h3>Autor: <%= libro.autor %>
+  </h3>
+  <h3>Estado: <%= libro.disponible ? 'Disponible' : 'No disponible' %>
+  </h3>
+</div>
+
+<h3 class="my-2 text-white text-center">Prestamos del libro:</h3>
+
+<ol class="list-group list-group-numbered flex flex-col gap-2">
+  <% prestamos.forEach((prestamo, index)=> { %>
+    <li class="border-t-2 <%= prestamo.info.fechaDevolucion ? "border-green-400" : "border-red-400" %> list-group-item mx-5 bg-light py-2 px-5 rounded-xs shadow-md flex gap-2 justify-between">
+      <p><%= index+1 %>.</p>
+      <h3>
+        <%= prestamo.info.cliente.idCliente %>
+      </h3>
+      <p>
+        <%= prestamo.info.cliente.nombre %>
+      </p>
+      <p>Fecha de prestamo: <%= prestamo.info.fechaPrestamo %>
+      </p>
+      <p>Fecha de devolucion: <%= prestamo.info.fechaDevolucion || "Sin registrar" %>
+      </p>
+    </li>
+    <% }) %>
+</ol>
